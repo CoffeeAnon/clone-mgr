@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="D. (Lazaren) Jacobsen">
+
+    <title>Clone status</title>
+    <link rel="stylesheet" href="../static/css/mystyles.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+          <h1 class="title">
+            Clone Status
+          </h1>
+          <br>
+        </div>
+        <div class="container is-size-7-mobile">
+            <div class="columns">
+                <div class="column">
+                    <div class="table-container">
+                        <table class="table is-striped is-hoverable">
+                            <thead>
+                                <th>ID</th>
+                                <th>Character</th>
+                                <th>Status</th>
+                                <th>Clone</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                {% for key,value in clone_status | dictsort %}
+                                    <tr>
+                                        {%if value.login_status is true or value.login_status is false%}
+                                            <td>{{key}}</td>
+                                        {% else %}
+                                            <td class="content is-danger">
+                                                {{key}}
+                                            </td>
+                                        {% endif %}
+                                        {%if value.login_status is true or value.login_status is false%}
+                                            <td>{{value.name|e}}</td>
+                                        {% else %}
+                                            <td class="content is-danger">
+                                                {{value.name|e}}
+                                            </td>
+                                        {% endif %}
+                                        {%if value.login_status is true%}
+                                            <td class="content is-success">
+                                                Logged in
+                                        {% elif value.login_status is false %}
+                                            <td>
+                                                Not logged in
+                                        {% else %}
+                                            <td class="content is-danger">
+                                                {{value.login_status}}
+                                            </td>
+                                        {% endif %}
+                                        </td>
+                                        {% if (value.login_status is true) %}
+                                            <td class="content">
+                                        {% elif value.is_training_clone is true%}
+                                            <td class="content is-success">
+                                        {% elif value.is_training_clone is false %}
+                                            <td class="content is-warning">
+                                        {% else %}
+                                            <td class="content is-danger">
+                                        {% endif %}
+                                            {% if value.is_training_clone is true %}
+                                                Training clone
+                                            {% elif value.is_training_clone is false %}
+                                                Non-training clone
+                                            {% else %}
+                                                {{value.is_training_clone}}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('connector_login_bp.logout_character', character_id=key, redirect='character_details_bp.clone_status')}}" class="button">
+                                                <span>
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    <tr>
+                                {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>   
+                        <br>
+                        <br>
+                        <a href="{{ url_for('connector_login_bp.login') }}">
+                            <img src="../static/img/EVE_SSO_Login_Buttons_Small_White.png"
+                                alt="Log in with eveonline.com" />
+                        </a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+

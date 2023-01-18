@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+// Config vars
+
+$palette-black: #0e0e0e;
+$palette-dark-grey: #171717;
+$palette-grey: #232323;
+$palette-light-grey: #c7c7c7;
+$palette-white: #fbfcfc;
+$palette-orange: #dc8c2e;
+$palette-blue: #384f55;
+$palette-turquoise: #00a99d;
+$palette-red: #a63446;
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+// Bulma global variables
+$family-sans-serif: "JetBrains Mono", monospace;
+$grey-dark: $palette-dark-grey;
+$grey-light: $palette-light-grey;
+$primary: $palette-blue;
+$danger: $palette-red;
+$link: $palette-turquoise;
+$warning: $palette-orange;
+$success: $palette-turquoise;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+$size-1: 2.4rem;
+$size-2: 2.1rem;
+$size-3: 1.8rem;
+$size-4: 1.4rem;
+$size-5: 1.2rem;
+$size-6: 1rem;
+$size-7: 0.8rem;
+
+// Bulma component variables
+$body-background-color: $grey-light;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../bulma/sass/utilities/_all.sass";
+@import "../bulma/sass/base/_all.sass";
+@import "../bulma/sass/grid/_all.sass";
+@import "../bulma/sass/utilities/_all.sass";
+@import "../bulma/sass/elements/_all.sass";
+@import "../bulma/sass/layout/section.sass";
+@import "../bulma/sass/helpers/_all.sass";
+
+$fa-font-path: "../fontawesome/webfonts";
+@import "../fontawesome/scss/fontawesome.scss";
+@import "../fontawesome/scss/solid.scss";

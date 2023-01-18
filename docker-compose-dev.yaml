@@ -1,0 +1,21 @@
+services:
+
+  clone-status-dev:
+    build:
+      context: .
+      dockerfile: dockerfile-dev
+    image: flask
+    networks:
+      - vaporware-dev
+    ports:
+      - '5000:5000'
+      # - "5678:5678" #For remote debugging
+    environment:
+      - FLASK_DEBUG=1
+    volumes:
+      - ./:/usr/src/app
+
+networks:
+  vaporware-dev:
+    external:
+      name: vaporware-dev

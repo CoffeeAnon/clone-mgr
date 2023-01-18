@@ -1,0 +1,11 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": false,
+    "python.linting.lintOnSave": true,
+    "workbench.colorTheme": "Default Dark+",
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.extraPaths": [
+        "./clone_status",
+        "./clone_status/flask_app",
+    ]
+}
